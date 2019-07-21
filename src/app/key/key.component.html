@@ -3,27 +3,11 @@
 <form style="width: 60%">
   <mat-form-field style="width: 80%;">
     <input matInput  placeholder="Enter your key"  value="" #existingKey/>
-    <mat-hint>All your tasks are associated with a key</mat-hint>
+    <mat-hint>Enter any easy to remember word</mat-hint>
   </mat-form-field>
-  &nbsp;&nbsp;
   <button [routerLink]="['todo', existingKey.value]" color="accent" mat-raised-button>Go</button>
 </form>
 </div>
 
-<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center">
-  <form class="key-form">
-    <button mat-raised-button color="primary">Create a key</button>
-  </form>
-</div>
-
-<section>
-  &nbsp;
-</section>
-<section style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center">
-  <form class="key-form1">
-    <mat-form-field class="mat-headline">
-      <input matInput  placeholder="What is your name"  value="" />
-    </mat-form-field>
-  </form>
-</section>
+<br/>
 

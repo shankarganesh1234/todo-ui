@@ -13,13 +13,15 @@ import {MaterialModule} from './material.module';
 import {MatButtonModule, MatChipsModule, MatMenuModule} from '@angular/material';
 import {KeyComponent} from './key/key.component';
 import {TodoComponent} from './todo/todo.component';
+import {HomeComponent} from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     KeyComponent,
-    TodoComponent
+    TodoComponent,
+    HomeComponent
   ],
     imports: [
         BrowserModule,
