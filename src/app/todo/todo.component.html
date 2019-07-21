@@ -1,0 +1,25 @@
+<section class="mat-typography" style="width: 100%; height: 100%;display: flex; align-items: center; justify-content: center">
+  <h4 class="mat-display-2">{{key}}</h4>
+</section>
+
+<section style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center" class="mat-typography">
+  <form class="mat-typography" style="width: 50%;">
+
+    <mat-list>
+      <mat-list-item *ngFor="let task of tasks">
+
+        <h2 matLine class="mat-headline"><b>{{task.name}}</b></h2>
+        <p matLine>{{task.dateTime | date:'short'}}</p>
+        <mat-chip-list>
+          <mat-chip>{{task.tag}}</mat-chip>
+        </mat-chip-list>
+
+        &nbsp;&nbsp;
+        <button color="primary" mat-mini-fab><mat-icon matListIcon>done</mat-icon></button>
+        &nbsp;&nbsp;
+        <button color="accent" mat-mini-fab><mat-icon matListIcon>delete</mat-icon></button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </form>
+</section>

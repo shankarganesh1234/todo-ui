@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import { TodoComponent } from './todo.component';
 
 describe('TodoComponent', () => {
   beforeEach(async(() => {
@@ -9,25 +9,25 @@ describe('TodoComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        TodoComponent
       ],
     }).compileComponents();
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(TodoComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it(`should have as title 'angular-todo-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(TodoComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('angular-todo-app');
   });
 
   it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(TodoComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to angular-todo-app!');
