@@ -10,11 +10,13 @@ import {HttpLink, HttpLinkModule} from 'apollo-angular-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
-import {MatButtonModule, MatChipsModule, MatMenuModule} from '@angular/material';
+import {MatButtonModule, MatChipsModule, MatDatepickerModule, MatMenuModule, MatNativeDateModule} from '@angular/material';
 import {KeyComponent} from './key/key.component';
 import {TodoComponent} from './todo/todo.component';
 import {HomeComponent} from './home/home.component';
-
+import {TodoService} from './services/todo-service';
+import {ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,11 @@ import {HomeComponent} from './home/home.component';
         MaterialModule,
         MatButtonModule,
         MatMenuModule,
-        MatChipsModule
+        MatChipsModule,
+        ReactiveFormsModule,
+        MatDatepickerModule,
+        FormsModule,
+        MatNativeDateModule
     ],
   providers: [{
     provide: APOLLO_OPTIONS,
@@ -47,7 +53,7 @@ import {HomeComponent} from './home/home.component';
       }
     },
     deps: [HttpLink]
-  }],
+  }, TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,4 +4,5 @@ export class Task {
     key: string;
     dateTime: string;
     tag: string;
+    status: string;
 }

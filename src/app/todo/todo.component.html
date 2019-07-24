@@ -1,25 +1,58 @@
-<section class="mat-typography" style="width: 100%; height: 100%;display: flex; align-items: center; justify-content: center">
+<section class="mat-typography centered">
   <h4 class="mat-display-2">{{key}}</h4>
 </section>
 
-<section style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center" class="mat-typography">
+<section class="mat-typography centered">
   <form class="mat-typography" style="width: 50%;">
+    <button mat-mini-fab title="Add a todo" *ngIf="!showAddTask" (click)="showAddTask = true;"><mat-icon matListIcon>playlist_add</mat-icon></button>
+
+    <section class="mat-typography centered" *ngIf="showAddTask">
+      <form [formGroup]="addTaskForm" (ngSubmit)="addTaskSubmit(addTaskForm.value)">
+        <mat-form-field style="width: 80%;">
+          <input matInput  placeholder="The task itself"  value="" formControlName="name" required/>
+          <mat-hint>The name of the task</mat-hint>
+        </mat-form-field>
+        <mat-form-field style="width: 80%;">
+          <input matInput  placeholder="Tag"  value="" formControlName="tag"/>
+          <mat-hint>Tag the task to describe what group it belongs to, like learning, software or chores</mat-hint>
+        </mat-form-field>
+        <br/>
+        <br/>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Finish this task by" formControlName="dateTime" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br/>
+        <button mat-raised-button color="primary" type="submit">Create</button>
+        &nbsp;&nbsp;
+        <button mat-raised-button color="accent" type="submit" (click)="showAddTask = false">Cancel</button>
+      </form>
+    </section>
+    <div *ngIf="showAddTask">
+      <br/>
+      <mat-divider></mat-divider>
+      <br/>
+    </div>
 
     <mat-list>
       <mat-list-item *ngFor="let task of tasks">
 
-        <h2 matLine class="mat-headline"><b>{{task.name}}</b></h2>
+        <h2 matLine class="mat-headline" [ngClass]="task.status == 'DONE' ? 'strikethrough' : ''"><b>{{task.name}}</b></h2>
         <p matLine>{{task.dateTime | date:'short'}}</p>
         <mat-chip-list>
           <mat-chip>{{task.tag}}</mat-chip>
         </mat-chip-list>
-
         &nbsp;&nbsp;
-        <button color="primary" mat-mini-fab><mat-icon matListIcon>done</mat-icon></button>
+        <button color="primary" mat-mini-fab *ngIf="task.status === 'CREATED'" (click)="updateTask(task.id, task.key, task.name, task.tag, task.dateTime, 'DONE')"><mat-icon matListIcon>done</mat-icon></button>
+        <button color="primary" mat-mini-fab *ngIf="task.status === 'DONE'" (click)="updateTask(task.id, task.key, task.name, task.tag, task.dateTime, 'CREATED')"><mat-icon matListIcon>edit</mat-icon></button>
         &nbsp;&nbsp;
-        <button color="accent" mat-mini-fab><mat-icon matListIcon>delete</mat-icon></button>
+        <button color="accent" mat-mini-fab (click)="deleteTask(task.id)"><mat-icon matListIcon>delete</mat-icon></button>
         <mat-divider></mat-divider>
       </mat-list-item>
     </mat-list>
   </form>
 </section>
+
+
